@@ -9,7 +9,14 @@ from io import BytesIO
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-st.set_page_config(page_title="AI Fashion Designer", layout="centered")
+st.set_page_config(
+    page_title="FashAI – AI Fashion Studio",
+    page_icon="👗",
+    layout="centered"
+)
+
+st.markdown("## ✨ FashAI – AI Fashion Studio")
+st.caption("Design custom outfits with AI")
 
 st.title("👗 AI Fashion Designer")
 st.write("Design custom outfits with AI")
