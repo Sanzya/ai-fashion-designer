@@ -25,7 +25,6 @@ with col1:
     st.markdown("### AI Fashion Studio")
     st.caption("From idea to runway in seconds.")
 
-# --- Floating Share Button (copy link to clipboard) ---
 
 # --- Social Share Buttons ---
 import urllib.parse
@@ -36,12 +35,20 @@ ENC_TEXT = urllib.parse.quote(f"{SHARE_TEXT} {PUBLIC_URL}")
 
 st.markdown(
     f"""
-<div style="position:fixed; top:72px; right:16px; display:flex; gap:8px; z-index:9999;">
-  <a href="https://wa.me/?text={ENC_TEXT}" target="_blank"
+<style>
+.share-pill:hover {{
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}}
+</style>
+
+
+<div style="position:fixed; top:64px; right:16px; display:flex; gap:8px; z-index:9999;">
+  <a class="share-pill" href="https://wa.me/?text={ENC_TEXT}" target="_blank"
      style="text-decoration:none; border:1px solid #ddd; border-radius:999px; padding:8px 12px; background:#25D366; color:white; font-size:14px;">
      🟢 WhatsApp
   </a>
-  <a href="https://www.linkedin.com/sharing/share-offsite/?url={PUBLIC_URL}" target="_blank"
+  <a class="share-pill" href="https://www.linkedin.com/sharing/share-offsite/?url={PUBLIC_URL}" target="_blank"
      style="text-decoration:none; border:1px solid #ddd; border-radius:999px; padding:8px 12px; background:#0A66C2; color:white; font-size:14px;">
      🔵 LinkedIn
   </a>
