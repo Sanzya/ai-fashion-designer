@@ -27,20 +27,20 @@ with col1:
     st.caption("From idea to runway in seconds.")
 
 # --- Share Toggle ---
-# if "show_share" not in st.session_state:
-    # st.session_state.show_share = False
+ if "show_share" not in st.session_state:
+     st.session_state.show_share = False
 
-# col1, col2 = st.columns([4, 1])
+ col1, col2 = st.columns([4, 1])
 
-# with col2:
-   # if st.button("🔗 Share"):
-       # st.session_state.show_share = not st.session_state.show_share
+ with col2:
+   if st.button("🔗 Share"):
+      st.session_state.show_share = not st.session_state.show_share
 
-# if st.session_state.show_share:
-    # --- st.info("🔗 Share link:\n\nhttps://ai-fashion-designer- fenqebmvjvtbwgdja8vgiu.streamlit.app/") ---
+if st.session_state.show_share:
+     st.info("🔗 Share link:\n\nhttps://ai-fashion-designer- fenqebmvjvtbwgdja8vgiu.streamlit.app/") 
 
 
-# --- Floating Share Button (copy link to clipboard) ---
+ # --- Floating Share Button (copy link to clipboard) ---
 st.markdown(
     """
 <button onclick="navigator.clipboard.writeText('https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/')"
