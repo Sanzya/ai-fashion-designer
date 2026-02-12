@@ -37,24 +37,6 @@ with st.container():
 
 
 
-st.markdown("### 🔗 Share FashAI")
-
-public_url = "https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/"
-
-st.text_input(
-    "Copy this link to share:",
-    public_url,
-    help="Share this link with friends on WhatsApp, LinkedIn, etc."
-)
-
-st.markdown(
-    f"""
-**Quick share text:**
-
-> Check out *FashAI* – an AI Fashion Designer that creates outfit designs in seconds 👗✨  
-> Try it here: {public_url}
-"""
-)
 
 
 
