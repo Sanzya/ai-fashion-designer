@@ -22,7 +22,7 @@ st.title("👗 AI Fashion Designer")
 st.write("Design custom outfits with AI")
 
 # --- UI Controls ---
-prompt = st.text_input("Describe your clothing idea:")
+prompt = st.text_input("Describe your outfit idea✍️")
 
 style = st.selectbox(
     "Style",
@@ -41,7 +41,8 @@ occasion = st.selectbox(
     ["Everyday", "Party", "Wedding", "Runway", "Office"]
 )
 
-if st.button("Generate Design"):
+if st.button("✨ Generate Design"):
+
     if prompt:
         with st.spinner("Creating design..."):
             full_prompt = (
