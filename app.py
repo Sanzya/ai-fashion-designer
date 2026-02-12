@@ -6,7 +6,7 @@ import base64
 from PIL import Image
 from io import BytesIO
 import pyperclip
-install pyperclip
+
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
