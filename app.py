@@ -21,6 +21,22 @@ st.caption("Design custom outfits with AI")
 st.title("👗 AI Fashion Designer")
 st.write("Design custom outfits with AI")
 
+with st.container():
+    col1, col2 = st.columns([5, 1])
+    with col2:
+        if st.button("🔗 Share"):
+            st.toast("Link copied! Share FashAI with friends 👗✨")
+            st.write(
+                "Share this message:\n\n"
+                "Check out *FashAI* – an AI Fashion Designer that creates outfit designs in seconds 👗✨\n"
+                "https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/"
+            )
+
+
+
+
+
+
 st.markdown("### 🔗 Share FashAI")
 
 public_url = "https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/"
