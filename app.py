@@ -19,9 +19,6 @@ st.set_page_config(
 
 # --- Hero Header ---
 
-col1, col2, col3 = st.columns([3, 1, 1])
-
-with col1:
     st.markdown("## ✨ **FashAI**")
     st.markdown("### AI Fashion Studio")
     st.caption("From idea to runway in seconds.")
