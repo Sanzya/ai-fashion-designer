@@ -36,7 +36,27 @@ style="position:fixed; top:16px; right:16px; border:1px solid #ddd; border-radiu
     unsafe_allow_html=True,
 )
 
-st.divider()
+# --- Social Share Buttons ---
+PUBLIC_URL = "https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/"
+SHARE_TEXT = "Check out FashAI – an AI Fashion Designer that creates outfit designs in seconds 👗✨"
+
+st.markdown(
+    f"""
+<div style="position:fixed; top:16px; right:16px; display:flex; gap:8px; z-index:9999;">
+  <a href="https://wa.me/?text={SHARE_TEXT}%20{PUBLIC_URL}" target="_blank"
+     style="text-decoration:none; border:1px solid #ddd; border-radius:999px; padding:6px 10px; background:#25D366; color:white; font-size:13px;">
+     WhatsApp
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url={PUBLIC_URL}" target="_blank"
+     style="text-decoration:none; border:1px solid #ddd; border-radius:999px; padding:6px 10px; background:#0A66C2; color:white; font-size:13px;">
+     LinkedIn
+  </a>
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+
 
 
 st.divider()
