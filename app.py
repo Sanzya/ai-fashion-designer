@@ -40,23 +40,6 @@ if st.session_state.show_share:
      st.info("🔗 Share link:\n\nhttps://ai-fashion-designer- fenqebmvjvtbwgdja8vgiu.streamlit.app/") 
 
 
- # --- Floating Share Button (copy link to clipboard) ---
-st.markdown(
-    """
-<button onclick="navigator.clipboard.writeText('https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/')"
-style="position:fixed; top:16px; right:16px; border:1px solid #ddd; border-radius:999px; padding:8px 12px; background:#fff; cursor:pointer; z-index:9999;">
-🔗 Share
-</button>
-""",
-    unsafe_allow_html=True,
-)
-
-st.caption("Tap 🔗 Share to copy the link.")
-
-
-
-
-
 
 
 st.divider()
