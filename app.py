@@ -15,27 +15,37 @@ st.set_page_config(
     layout="centered"
 )
 
-st.markdown("## ✨ FashAI – AI Fashion Studio")
+# --- Hero Header ---
+col1, col2 = st.columns([4, 1])
+
+with col1:
+    st.markdown("## ✨ **FashAI**")
+    st.markdown("### AI Fashion Studio")
+    st.caption("From idea to runway in seconds.")
+
+with col2:
+    st.markdown(
+        """
+        <div style="display:flex; justify-content:flex-end; margin-top:10px;">
+            <button onclick="navigator.clipboard.writeText('https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/')" 
+                style="
+                    border:1px solid #ddd;
+                    border-radius:8px;
+                    padding:6px 10px;
+                    background:#fff;
+                    cursor:pointer;
+                    font-size:14px;
+                ">
+                🔗 Share
+            </button>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+st.divider()
+
 st.caption("Design custom outfits with AI")
-
-st.title("👗 AI Fashion Designer")
-st.write("Design custom outfits with AI")
-
-with st.container():
-    col1, col2 = st.columns([5, 1])
-    with col2:
-        if st.button("🔗 Share"):
-            st.toast("Link copied! Share FashAI with friends 👗✨")
-            st.write(
-                "Share this message:\n\n"
-                "Check out *FashAI* – an AI Fashion Designer that creates outfit designs in seconds 👗✨\n"
-                "https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/"
-            )
-
-
-
-
-
 
 
 
