@@ -26,16 +26,19 @@ with col1:
     st.markdown("### AI Fashion Studio")
     st.caption("From idea to runway in seconds.")
 
-with col3:
-    # IMPROVED SHARE BUTTON
-    if st.button("🔗 Share", key="share_btn"):
-        share_url = "https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/"
-        try:
-            pyperclip.copy(share_url)
-            st.success("✅ Link copied to clipboard!")
-        except:
-            # Fallback if pyperclip doesn't work
-            st.info(f"📋 Share link: {share_url}")
+# --- Share Toggle ---
+if "show_share" not in st.session_state:
+    st.session_state.show_share = False
+
+col1, col2 = st.columns([4, 1])
+
+with col2:
+    if st.button("🔗 Share"):
+        st.session_state.show_share = not st.session_state.show_share
+
+if st.session_state.show_share:
+    st.info("🔗 Share link:\n\nhttps://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/")
+
 
 
 st.divider()
