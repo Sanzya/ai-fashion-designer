@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 import base64
 from PIL import Image
 from io import BytesIO
+import pyperclip
+install pyperclip
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -16,32 +18,25 @@ st.set_page_config(
 )
 
 # --- Hero Header ---
-col1, col2 = st.columns([4, 1])
+
+col1, col2, col3 = st.columns([3, 1, 1])
 
 with col1:
     st.markdown("## ✨ **FashAI**")
     st.markdown("### AI Fashion Studio")
     st.caption("From idea to runway in seconds.")
 
-with col2:
-    st.markdown(
-        """
-        <div style="display:flex; justify-content:flex-end; margin-top:10px;">
-            <button onclick="navigator.clipboard.writeText('https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/')" 
-                style="
-                    border:1px solid #ddd;
-                    border-radius:8px;
-                    padding:6px 10px;
-                    background:#fff;
-                    cursor:pointer;
-                    font-size:14px;
-                ">
-                🔗 Share
-            </button>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+with col3:
+    # IMPROVED SHARE BUTTON
+    if st.button("🔗 Share", key="share_btn"):
+        share_url = "https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/"
+        try:
+            pyperclip.copy(share_url)
+            st.success("✅ Link copied to clipboard!")
+        except:
+            # Fallback if pyperclip doesn't work
+            st.info(f"📋 Share link: {share_url}")
+
 
 st.divider()
 
