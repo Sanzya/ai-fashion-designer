@@ -18,12 +18,14 @@ st.set_page_config(
 )
 
 # --- Hero Header ---
+col1, col2 = st.columns([4, 1])
 
+with col1:
     st.markdown("## ✨ **FashAI**")
     st.markdown("### AI Fashion Studio")
     st.caption("From idea to runway in seconds.")
 
-# --- Share Toggle ---
+# --- Floating Share Button (copy link to clipboard) ---
 st.markdown(
     """
 <button onclick="navigator.clipboard.writeText('https://ai-fashion-designer-fenqebmvjvtbwgdja8vgiu.streamlit.app/')"
@@ -33,6 +35,8 @@ style="position:fixed; top:16px; right:16px; border:1px solid #ddd; border-radiu
 """,
     unsafe_allow_html=True,
 )
+
+st.divider()
 
 
 st.divider()
