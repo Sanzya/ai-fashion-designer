@@ -122,10 +122,10 @@ for i, (style_name, data) in enumerate(STYLE_PRESETS.items()):
 
 
 # --- UI Controls ---
-prompt = st.text_input("Describe your outfit idea ✍️")
 prompt = st.text_input(
     "Describe your outfit idea ✍️",
-    value=st.session_state.get("preset_prompt", "")
+    value=st.session_state.get("preset_prompt", ""),
+    key="prompt_input"
 )
 
 style = st.selectbox(
@@ -133,12 +133,18 @@ style = st.selectbox(
     ["Casual", "Formal", "Streetwear", "Bridal"],
     index=["Casual", "Formal", "Streetwear", "Bridal"].index(
         st.session_state.get("preset_style", "Casual")
-    )
+    ),
+    key="style_select"
 )
 
-fabric = st.selectbox("Fabric", ["Silk", "Denim", "Cotton", "Velvet"])
-color = st.color_picker("Pick a main color", "#1f77b4")
-occasion = st.selectbox("Occasion", ["Everyday", "Party", "Wedding", "Runway", "Office"])
+fabric = st.selectbox("Fabric", ["Silk", "Denim", "Cotton", "Velvet"], key="fabric_select")
+color = st.color_picker("Pick a main color", "#1f77b4", key="color_picker")
+occasion = st.selectbox(
+    "Occasion",
+    ["Everyday", "Party", "Wedding", "Runway", "Office"],
+    key="occasion_select"
+)
+
 
 # --- Generate ---
 if st.button("✨ Generate Design"):
@@ -194,6 +200,7 @@ if st.button("✨ Generate Design"):
             st.write(text_response.output_text)
     else:
         st.warning("Please enter a description.")
+
 
 
 
