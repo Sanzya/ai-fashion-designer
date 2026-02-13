@@ -19,6 +19,14 @@ st.set_page_config(
 )
 
 # --- Hero Header ---
+col1, col2 = st.columns([4, 1])
+
+with col1:
+    st.markdown("## ✨ **FashAI**")
+    st.markdown("### AI Fashion Studio")
+    st.caption("From idea to runway in seconds.")
+
+
 st.markdown("### ✏️ Sketch your idea (optional)")
 st.caption("Draw a rough outfit idea. The AI will use this sketch as inspiration.")
 
@@ -33,15 +41,15 @@ canvas_result = st_canvas(
     key="canvas",
 )
 
+# --- Sketch Toolbar ---
+col_a, col_b = st.columns([3, 1])
+with col_a:
+    st.caption("Tip: Draw silhouette first, then add details.")
+with col_b:
+    if st.button("🧹 Clear sketch"):
+        st.session_state["canvas"] = None
 
 
-
-col1, col2 = st.columns([4, 1])
-
-with col1:
-    st.markdown("## ✨ **FashAI**")
-    st.markdown("### AI Fashion Studio")
-    st.caption("From idea to runway in seconds.")
 
 
 # --- Social Share Buttons ---
@@ -114,10 +122,14 @@ occasion = st.selectbox(
 )
 
 if st.button("✨ Generate Design"):
-
     if prompt:
         with st.spinner("Creating design..."):
+            sketch_note = ""
+            if canvas_result.image_data is not None:
+                sketch_note = "Use the user's rough sketch as inspiration for the garment silhouette and details. "
+
             full_prompt = (
+                f"{sketch_note}"
                 f"Fashion design sketch of a {style.lower()} outfit made of {fabric.lower()}, "
                 f"main color {color}, for {occasion.lower()} occasion. "
                 f"Studio lighting, white background. {prompt}"
@@ -158,6 +170,11 @@ if st.button("✨ Generate Design"):
                 input=description_prompt
             )
 
+            st.markdown("### 📝 Design Description")
+            st.write(text_response.output_text)
+    else:
+        st.warning("Please enter a description.")
+
             description = text_response.output_text
 
             st.markdown("### 📝 Design Description")
@@ -165,4 +182,5 @@ if st.button("✨ Generate Design"):
 
     else:
         st.warning("Please enter a description.")
+
 
