@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import base64
 from PIL import Image
 from io import BytesIO
+from streamlit_drawable_canvas import st_canvas
 
 
 
@@ -18,6 +19,23 @@ st.set_page_config(
 )
 
 # --- Hero Header ---
+st.markdown("### ✏️ Sketch your idea (optional)")
+st.caption("Draw a rough outfit idea. The AI will use this sketch as inspiration.")
+
+canvas_result = st_canvas(
+    fill_color="rgba(255, 255, 255, 0.0)",
+    stroke_width=3,
+    stroke_color="#000000",
+    background_color="#FFFFFF",
+    height=320,
+    width=240,
+    drawing_mode="freedraw",
+    key="canvas",
+)
+
+
+
+
 col1, col2 = st.columns([4, 1])
 
 with col1:
@@ -62,6 +80,16 @@ st.divider()
 
 st.caption("Design custom outfits with AI")
 
+sketch_note = ""
+if canvas_result.image_data is not None:
+    sketch_note = "Use the user's rough sketch as inspiration for the garment silhouette and details. "
+
+full_prompt = (
+    f"{sketch_note}"
+    f"Fashion design sketch of a {style.lower()} outfit made of {fabric.lower()}, "
+    f"main color {color}, for {occasion.lower()} occasion. "
+    f"Studio lighting, white background. {prompt}"
+)
 
 
 
@@ -137,3 +165,4 @@ if st.button("✨ Generate Design"):
 
     else:
         st.warning("Please enter a description.")
+
