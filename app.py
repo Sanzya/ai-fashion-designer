@@ -81,9 +81,61 @@ with col_b:
 st.divider()
 st.caption("Design custom outfits with AI")
 
+# --- Style Gallery (Presets) ---
+st.markdown("### 🖼️ Explore styles")
+st.caption("Click a style to prefill your design. You can tweak it after.")
+
+STYLE_PRESETS = {
+    "Casual": {
+        "emoji": "👕",
+        "prompt": "Relaxed everyday outfit with comfortable fit and minimal details"
+    },
+    "Formal": {
+        "emoji": "🕴️",
+        "prompt": "Elegant formal wear suitable for evening events and ceremonies"
+    },
+    "Streetwear": {
+        "emoji": "🧢",
+        "prompt": "Modern streetwear with bold accents and urban aesthetic"
+    },
+    "Bridal": {
+        "emoji": "👰",
+        "prompt": "Bridal outfit with intricate embroidery and luxurious fabrics"
+    },
+}
+
+# Session state for prefill
+if "preset_prompt" not in st.session_state:
+    st.session_state.preset_prompt = ""
+if "preset_style" not in st.session_state:
+    st.session_state.preset_style = "Casual"
+
+cols = st.columns(4)
+for i, (style_name, data) in enumerate(STYLE_PRESETS.items()):
+    with cols[i]:
+        if st.button(f"{data['emoji']} {style_name}"):
+            st.session_state.preset_prompt = data["prompt"]
+            st.session_state.preset_style = style_name
+
+
+
+
+
 # --- UI Controls ---
 prompt = st.text_input("Describe your outfit idea ✍️")
-style = st.selectbox("Style", ["Casual", "Formal", "Streetwear", "Bridal"])
+prompt = st.text_input(
+    "Describe your outfit idea ✍️",
+    value=st.session_state.get("preset_prompt", "")
+)
+
+style = st.selectbox(
+    "Style",
+    ["Casual", "Formal", "Streetwear", "Bridal"],
+    index=["Casual", "Formal", "Streetwear", "Bridal"].index(
+        st.session_state.get("preset_style", "Casual")
+    )
+)
+
 fabric = st.selectbox("Fabric", ["Silk", "Denim", "Cotton", "Velvet"])
 color = st.color_picker("Pick a main color", "#1f77b4")
 occasion = st.selectbox("Occasion", ["Everyday", "Party", "Wedding", "Runway", "Office"])
@@ -142,6 +194,7 @@ if st.button("✨ Generate Design"):
             st.write(text_response.output_text)
     else:
         st.warning("Please enter a description.")
+
 
 
 
