@@ -175,12 +175,4 @@ if st.button("✨ Generate Design"):
     else:
         st.warning("Please enter a description.")
 
-            description = text_response.output_text
-
-            st.markdown("### 📝 Design Description")
-            st.write(description)
-
-    else:
-        st.warning("Please enter a description.")
-
 
